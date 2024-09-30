@@ -7,16 +7,19 @@ import tkinter as tk
 from tkinter import messagebox
 
 # Function to parse the data and extract rows
+# Function to parse the data and extract rows
 def parse_data(file_path):
     rows = []
     
-    with open(file_path, 'r') as file:
+    # Use 'utf-8' encoding to handle most cases, but you can switch to 'latin1' if needed
+    with open(file_path, 'r', encoding='utf-8', errors='replace') as file:
         for line in file:
             # Split the line by tabs
             fields = line.strip().split('\t')
             rows.append(fields)
     
     return rows
+
 
 # Function to capitalize the entire text
 def capitalize_text(text):
@@ -174,9 +177,10 @@ keyboard.add_hotkey('up', process_next_phone_number1)
 
 def update_data_file(file_path, remaining_rows):
     """Rewrite data.txt with the remaining rows"""
-    with open(file_path, 'w') as file:
+    with open(file_path, 'w', encoding='utf-8', errors='replace') as file:
         for row in remaining_rows:
             file.write('\t'.join(row) + '\n')
+
 
 def process_next_phone_number():
     global rows
