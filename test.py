@@ -42,6 +42,47 @@ def show_custom_popup():
     custom_popup.attributes('-topmost', True)
     root.mainloop()
 
+def taking_note():
+    # from sticky notes
+    py.moveTo(1490, 335) 
+    py.click()
+    py.hotkey('ctrl', 'a')
+    py.hotkey('ctrl', 'c')
+    py.moveTo(587, 821, 0.5) 
+    py.click()
+    py.hotkey('ctrl', 'v')
+    py.hotkey('enter')
+    # from dr's link
+    py.moveTo(565, 59, 0.5)
+    py.click()
+    py.hotkey('ctrl', 'c')
+    py.moveTo(410, 1024, 0.5)
+    py.click()
+    py.moveTo(587, 821, 0.5) 
+    py.click()
+    py.typewrite('DR LINK:')
+    py.hotkey('ctrl', 'v')
+    py.hotkey('enter')
+    # from vici dial
+    py.moveTo(156, 21, 0.5) 
+    py.click()
+    py.moveTo(536, 840, 0.5) 
+    py.click()
+    py.moveTo(108, 774, 0.5) 
+    py.tripleClick()
+    py.hotkey('ctrl', 'c')
+    py.moveTo(414, 1030, 0.5) 
+    py.click()
+    py.moveTo(587, 821, 0.5) 
+    py.click()
+    py.typewrite('1 VICI RECORDING      ')
+    py.hotkey('ctrl', 'v')
+    py.hotkey('enter')
+
+
+
+
+
 # Define functions to handle different dispositions
 def dnc():
     print("DNC OK")
@@ -136,7 +177,9 @@ def handle_voice_command(command):
     elif "next" in command:
         process_next_phone_number()   
     elif "dnc" in command:
-        dnc()     
+        dnc() 
+    elif "take note" in command:
+        taking_note()        
     else:
         print("Command not recognized.")
 
